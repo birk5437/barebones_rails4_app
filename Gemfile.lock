@@ -31,6 +31,9 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.10)
+    authlogic (3.3.0)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
     awesome_print (1.1.0)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
@@ -128,6 +131,7 @@ PLATFORMS
 
 DEPENDENCIES
   activeresource (~> 4.0.0.beta1)
+  authlogic
   awesome_print
   better_errors
   coffee-rails (~> 4.0.0)

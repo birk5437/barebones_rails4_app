@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database:
+  database: barebones_rails4_dev
   host: localhost
   username: burke
   password:

@@ -1,6 +1,13 @@
 BarebonesRails4App::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  resources :users
+  resources :user_sessions
+
+  root to: 'users#index'
+
+  match '/login',  :via => :get, :to => 'user_sessions#new'
+  match '/logout', :via => :delete, :to => "user_sessions#destroy"
 
   # You can have the root of your site routed with "root"
   # root 'welcome#index'

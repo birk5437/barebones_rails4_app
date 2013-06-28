@@ -12,6 +12,7 @@ end
 gem 'haml-rails'
 gem 'haml'
 gem 'activeresource', '~> 4.0.0.beta1', :require => 'active_resource'
+gem 'authlogic'
 
 
 # Use SCSS for stylesheets
