@@ -7,12 +7,14 @@ gem 'pg'
 gem "awesome_print", :group => [:development, :mirror]
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 gem 'haml-rails'
 gem 'haml'
 gem 'activeresource', '~> 4.0.0.beta1', :require => 'active_resource'
 gem 'authlogic'
+gem 'formtastic', :github => 'justinfrench/formtastic', :branch => 'master'
 
 
 # Use SCSS for stylesheets

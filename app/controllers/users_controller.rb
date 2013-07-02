@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.xml
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_params)
 
     if @user.save
       flash[:notice] = "Registration successful."
@@ -63,6 +63,12 @@ class UsersController < ApplicationController
         render :action => 'edit'
       end
     end
+  end
+
+  private ####################################################################
+
+  def user_params
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
 end

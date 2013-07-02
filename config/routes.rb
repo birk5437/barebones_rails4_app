@@ -3,8 +3,9 @@ BarebonesRails4App::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :users
   resources :user_sessions
+  resources :welcome, :only => :index
 
-  root to: 'users#index'
+  root to: 'welcome#index'
 
   match '/login',  :via => :get, :to => 'user_sessions#new'
   match '/logout', :via => :delete, :to => "user_sessions#destroy"
