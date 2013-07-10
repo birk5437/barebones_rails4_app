@@ -65,6 +65,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm_registration
+    @user = User.find(params[:id])
+    if params[:token].present?  && params[:token] == @user.registration_token
+      @user.registration_confirmed = true
+      @user.registration_token = nil
+      if @user.save
+        flash[:notice] = "Registration Confirmed"
+      else
+        flash[:notice] = "Error"
+      end
+    else
+      flash[:notice] = "Error"
+    end
+    redirect_to root_url
+  end
+
   private ####################################################################
 
   def user_params

@@ -4,11 +4,24 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
+  before_filter :
 
   # # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
   helper_method :current_user
+
+  def logged_in?
+    !!current_user && !current_user_session.try(:stale?)
+  end
+
+  def login_required
+    unless logged_in?
+      flash[:error] = "You must be logged in to perform this action."
+      flash[:error] = "You have been logged out due to inactivity." if current_user_session.present? && current_user_session.stale?
+      redirect_to login_path
+    end
+  end
 
   private ############################
 
