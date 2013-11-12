@@ -4,12 +4,12 @@
 class ApplicationController < ActionController::Base
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
-  before_filter :
+  before_filter :login_required
 
   # # Scrub sensitive parameters from your log
   # filter_parameter_logging :password
 
-  helper_method :current_user
+  helper_method :current_user#, :set_current_user
 
   def logged_in?
     !!current_user && !current_user_session.try(:stale?)
@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
   end
 
   private ############################
+
+  def set_current_user
+    Authorization.current_user = current_user
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

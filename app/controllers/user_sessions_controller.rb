@@ -1,6 +1,10 @@
 class UserSessionsController < ApplicationController
+
+  skip_before_filter :login_required, :only => [:new, :create]
+
   def new
     @user_session = UserSession.new
+    return
   end
 
   def create
@@ -19,4 +23,14 @@ class UserSessionsController < ApplicationController
     flash[:notice] = "Successfully logged out."
     redirect_to root_url
   end
+
+  protected
+
+  def require_no_login
+    if current_person.present?
+      # redirect_to Mobi.homepage_url
+      return false
+    end
+  end
+
 end
